@@ -9,7 +9,7 @@ const {makeTableMarkup, isbnFilterMarkup} = require('./helper/markups')
 const os = require('os');
 const fs = require('fs');
 
-const port = 3000;
+const port = process.env.port || 3000;
 app.use(express.json());
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.urlencoded({extend:true, extended: true}));
