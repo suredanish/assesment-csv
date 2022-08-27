@@ -1,3 +1,6 @@
+const config = require("./config.json")
+
+
 async function getTable(files, isbn = "notAnIsbn") {
    let formData = new FormData();
 
@@ -6,7 +9,7 @@ async function getTable(files, isbn = "notAnIsbn") {
    })
    
    formData.append('isbn', isbn);
-   const result = await fetch('http://localhost:3000/upload_file', {
+   const result = await fetch(`${config.loc}/upload_file`, {
       method: 'POST',
       body: formData
    })
@@ -67,7 +70,7 @@ document.getElementById("exportBooksButton").addEventListener("click", async (e)
    }
 
 
-  fetch('http://localhost:3000/exporttocsv', {
+  fetch(`${config.loc}/exporttocsv`, {
    method: 'POST', 
    mode: 'cors', 
    cache: 'no-cache',
